@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Plateforme numérique interactive et guide de l'étudiant de l'École Nationale Supérieure des Travaux Publics (ENSTP) de Kouba, Alger.">
+  <title>GUIDE ÉTUDIANT ENSTP | Kouba, Alger</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="logo.png">
+
+  <!-- Feuilles de Style -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Lucide Icons via CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Système Trilingue (FR / EN / AR) -->
+  <script src="js/i18n.js"></script>
+</head>
+<body>
+
+  <!-- App Wrapper -->
+  <div class="app-container">
+    
+    <!-- Mobile Sidebar Backdrop -->
+    <div class="sidebar-backdrop"></div>
+
+    <!-- ==================================================================== -->
+    <!-- BARRE LATÉRALE (SIDEBAR) -->
+    <!-- ==================================================================== -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="#accueil" class="logo-wrapper" data-goto="accueil">
+          <img src="logo.png" alt="Logo Officiel ENSTP" class="school-logo">
+          <div class="logo-text">
+            <span class="logo-title">ENSTP</span>
+            <span class="logo-subtitle">KOUBA, ALGER</span>
+          </div>
+        </a>
+      </div>
+
+      <nav class="sidebar-nav">
+        <span class="nav-section-title" data-i18n="navSectionTitle">Navigation Principale</span>
+        
+        <a href="#accueil" class="nav-item active" data-section="accueil">
+          <i data-lucide="home"></i>
+          <span data-i18n="navHome">Accueil & Présentation</span>
+        </a>
+
+        <a href="#carte-interactive" class="nav-item" data-section="carte-interactive">
+          <i data-lucide="map"></i>
+          <span data-i18n="navMap">Carte du Campus</span>
+          <span class="nav-badge" data-i18n="badgeMap">3D/2D</span>
+        </a>
+
+        <a href="#vie-pratique" class="nav-item" data-section="vie-pratique">
+          <i data-lucide="shopping-bag"></i>
+          <span data-i18n="navLife">Vie Pratique & Adresses</span>
+          <span class="nav-badge" data-i18n="badgeLife">19 spots</span>
+        </a>
+
+        <a href="#transports" class="nav-item" data-section="transports">
+          <i data-lucide="bus"></i>
+          <span data-i18n="navTransport">Transports & Déplacements</span>
+        </a>
+
+        <a href="#sport" class="nav-item" data-section="sport">
+          <i data-lucide="trophy"></i>
+          <span data-i18n="navSport">Sport & Club SSC</span>
+          <span class="nav-badge" data-i18n="badgeSport">SSC</span>
+        </a>
+
+        <a href="#emplois-du-temps" class="nav-item" data-section="emplois-du-temps">
+          <i data-lucide="calendar"></i>
+          <span data-i18n="navSchedule">Emplois du Temps</span>
+          <span class="nav-badge" data-i18n="badgeSchedule">CP & Ing</span>
+        </a>
+
+        <span class="nav-section-title" style="margin-top: 0.75rem;" data-i18n="navSupportTitle">Support & Contact</span>
+
+        <a href="#contacts" class="nav-item" data-section="contacts">
+          <i data-lucide="phone-call"></i>
+          <span data-i18n="navContacts">Services & Contacts</span>
+        </a>
+      </nav>
+
+      <!-- Sidebar Footer (Sélecteur de langue & SSC Instagram) -->
+      <div class="sidebar-footer">
+        <div class="sidebar-lang-picker" style="margin-bottom: 0.85rem;">
+          <div class="lang-selector-group" style="width: 100%; justify-content: space-around;" title="Changer la langue / Select language / تغيير اللغة">
+            <button type="button" class="lang-btn active" data-lang="fr" aria-label="Français">🇫🇷 FR</button>
+            <button type="button" class="lang-btn" data-lang="en" aria-label="English">🇬🇧 EN</button>
+            <button type="button" class="lang-btn" data-lang="ar" aria-label="العربية">🇩🇿 AR</button>
+          </div>
+        </div>
+        <a href="https://www.instagram.com/ssc.enstp?obrf=MTFtNm85eGoyNzlqOQ==" target="_blank" rel="noopener noreferrer" class="ssc-quick-card">
+          <div class="ssc-icon-box">
+            <i data-lucide="instagram"></i>
+          </div>
+          <div class="ssc-quick-text">
+            <span class="ssc-quick-title" data-i18n="sscClubTitle">School Sport Club</span>
+            <span class="ssc-quick-link">@ssc.enstp <i data-lucide="external-link" style="width: 12px; height: 12px;"></i></span>
+          </div>
+        </a>
+      </div>
+    </aside>
+
+    <!-- ==================================================================== -->
+    <!-- ZONE PRINCIPALE (MAIN CONTENT) -->
+    <!-- ==================================================================== -->
+    <main class="main-content">
+      
+      <!-- Top App Header -->
+      <header class="app-header">
+        <div class="header-left">
+          <button class="mobile-menu-btn" aria-label="Ouvrir le menu">
+            <i data-lucide="menu"></i>
+          </button>
+
+          <!-- Barre de Recherche Globale (Ctrl + K) -->
+          <div class="header-search-bar" id="headerSearchInput">
+            <i data-lucide="search"></i>
+            <input type="text" data-i18n-placeholder="searchPlaceholder" placeholder="Rechercher fast-food, amphi, bus, matière..." readonly>
+            <span class="search-shortcut" data-i18n="searchShortcut">CTRL K</span>
+          </div>
+        </div>
+
+        <div class="header-actions">
+          <!-- Sélecteur Trilingue Interactif (FR / EN / AR) -->
+          <div class="lang-selector-group" title="Changer la langue / Select language / تغيير اللغة">
+            <button type="button" class="lang-btn active" data-lang="fr" aria-label="Français">🇫🇷 FR</button>
+            <button type="button" class="lang-btn" data-lang="en" aria-label="English">🇬🇧 EN</button>
+            <button type="button" class="lang-btn" data-lang="ar" aria-label="العربية">🇩🇿 AR</button>
+          </div>
+
+          <button class="header-btn header-btn-secondary" data-goto="carte-interactive">
+            <i data-lucide="compass"></i>
+            <span data-i18n="btnCampusMap">Carte Campus</span>
+          </button>
+          
+          <button class="header-btn header-btn-primary" data-goto="emplois-du-temps">
+            <i data-lucide="clock"></i>
+            <span data-i18n="btnMySchedule">Emplois du Temps</span>
+          </button>
+
+          <button class="theme-toggle-btn" aria-label="Changer le thème" title="Thème Clair / Sombre">
+            <i data-lucide="moon"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- Content Wrapper -->
+      <div class="content-wrapper">
+
+        <!-- ================================================================ -->
+        <!-- 1. ACCUEIL (ACCUEIL & PRÉSENTATION ENSTP) -->
+        <!-- ================================================================ -->
+        <section id="accueil" class="app-section active">
+          
+          <!-- Hero Banner avec HABILLAGE PHOTO OFFICIELLE ENSTP -->
+          <div class="hero-banner">
+            <!-- Image officielle de l'école ENSTP Kouba -->
+            <img src="enstp-photo.webp" alt="Portail Officiel ENSTP Kouba" class="hero-img-bg">
+
+            <!-- Voile semi-transparent subtilement teinté pour assurer une lisibilité parfaite -->
+            <div class="hero-overlay"></div>
+            
+            <div class="hero-content">
+              <span class="hero-badge">
+                <i data-lucide="graduation-cap"></i>
+                <span data-i18n="heroBadge">École Nationale Supérieure d'Ingénieurs d'État</span>
+              </span>
+              <h1 class="hero-title" data-i18n="heroTitle">Portail & Guide de l'Étudiant ENSTP</h1>
+              <p class="hero-subtitle" data-i18n="heroSubtitle">
+                Bienvenue sur la plateforme numérique centralisée de l'École Nationale Supérieure des Travaux Publics de Kouba, Alger. Accédez instantanément à vos emplois du temps, à la carte interactive du campus et à toutes les adresses utiles autour de l'école.
+              </p>
+              <div class="hero-actions">
+                <a href="#carte-interactive" class="btn-hero btn-hero-primary" data-goto="carte-interactive">
+                  <i data-lucide="map-pin"></i>
+                  <span data-i18n="btnHeroMap">Explorer la Carte Interactive</span>
+                </a>
+                <a href="#emplois-du-temps" class="btn-hero btn-hero-secondary" data-goto="emplois-du-temps">
+                  <i data-lucide="calendar"></i>
+                  <span data-i18n="btnHeroSchedule">Consulter les Emplois du Temps</span>
+                </a>
+                <a href="#vie-pratique" class="btn-hero btn-hero-secondary" data-goto="vie-pratique">
+                  <i data-lucide="utensils"></i>
+                  <span data-i18n="btnHeroLife">Guide Pratique Kouba & Garidi</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chiffres Clés -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon"><i data-lucide="calendar"></i></div>
+              <span class="stat-value" data-i18n="statFoundationVal">1970</span>
+              <span class="stat-label" data-i18n="statFoundationLabel">Année de Fondation</span>
+              <span class="stat-desc" data-i18n="statFoundationDesc">+54 ans d'excellence en génie civil</span>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon"><i data-lucide="layers"></i></div>
+              <span class="stat-value" data-i18n="statDeptsVal">2 Pôles</span>
+              <span class="stat-label" data-i18n="statDeptsLabel">Départements d'Élite</span>
+              <span class="stat-desc" data-i18n="statDeptsDesc">DIB (Infrastructures) & DMS (Structures)</span>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon"><i data-lucide="award"></i></div>
+              <span class="stat-value" data-i18n="statCycleVal">5 Ans</span>
+              <span class="stat-label" data-i18n="statCycleLabel">Cycle d'Ingénieur</span>
+              <span class="stat-desc" data-i18n="statCycleDesc">2 ans Prépa + 3 ans Spécialisation</span>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon"><i data-lucide="flask-conical"></i></div>
+              <span class="stat-value" data-i18n="statLabsVal">12+</span>
+              <span class="stat-label" data-i18n="statLabsLabel">Laboratoires d'Essais</span>
+              <span class="stat-desc" data-i18n="statLabsDesc">Géotechnique, Bétons, Matériaux, VRD</span>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon"><i data-lucide="users"></i></div>
+              <span class="stat-value" data-i18n="statEngineersVal">+12 000</span>
+              <span class="stat-label" data-i18n="statEngineersLabel">Ingénieurs Diplômés</span>
+              <span class="stat-desc" data-i18n="statEngineersDesc">Bâtisseurs des grands chantiers nationaux</span>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon"><i data-lucide="trending-up"></i></div>
+              <span class="stat-value" data-i18n="statInsertVal">95%</span>
+              <span class="stat-label" data-i18n="statInsertLabel">Taux d'Insertion</span>
+              <span class="stat-desc" data-i18n="statInsertDesc">Plébiscités par les entreprises du BTPH</span>
+            </div>
+          </div>
+
+          <!-- Présentation Générale de l'École -->
+          <div class="presentation-grid">
+            <div class="presentation-card">
+              <div class="card-heading">
+                <div class="card-heading-icon"><i data-lucide="landmark"></i></div>
+                <h3 data-i18n="aboutVocationTitle">Histoire & Vocation Nationale</h3>
+              </div>
+              <p class="presentation-text" data-i18n="aboutVocationText1">
+                Implantée sur les hauteurs de <strong>Sidi Garidi à Kouba</strong>, l'<strong>École Nationale Supérieure des Travaux Publics (ENSTP)</strong> est l'établissement universitaire d'élite algérien dédié à la formation d'ingénieurs d'État, de chercheurs et de décideurs dans les domaines des infrastructures de transport, du génie civil et de l'aménagement du territoire.
+              </p>
+              <p class="presentation-text" data-i18n="aboutVocationText2">
+                Depuis plus d'un demi-siècle, les ingénieurs diplômés de l'ENSTP conçoivent et pilotent les méga-projets structurants de la nation : <em>l'Autoroute Est-Ouest, l'Autoroute des Hauts Plateaux, le Réseau Ferroviaire National, les grandes gares aéroportuaires, les ports commerciaux, les ponts et viaducs à grande portée</em> ainsi que le renforcement parasismique des structures.
+              </p>
+            </div>
+
+            <div class="presentation-card">
+              <div class="card-heading">
+                <div class="card-heading-icon"><i data-lucide="git-branch"></i></div>
+                <h3 data-i18n="aboutDeptsTitle">Les Deux Départements Majeurs</h3>
+              </div>
+              <div class="departments-preview">
+                <div class="dept-box">
+                  <div class="dept-box-header">
+                    <i data-lucide="route"></i>
+                    <span data-i18n="deptDibTitle">Département Infrastructures de Base (DIB)</span>
+                  </div>
+                  <p data-i18n="deptDibDesc">Voies de communication terrestres, tracés autoroutiers, géométrie routière, aérodromes, voies ferrées, travaux maritimes & portuaires et géotechnique appliquée.</p>
+                </div>
+                <div class="dept-box">
+                  <div class="dept-box-header">
+                    <i data-lucide="building"></i>
+                    <span data-i18n="deptDmsTitle">Département Matériaux & Structures (DMS)</span>
+                  </div>
+                  <p data-i18n="deptDmsDesc">Calcul avancé des structures, béton armé & béton précontraint, charpentes métalliques, dynamique des structures, génie parasismique (RPA) et durabilité des matériaux.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Raccourcis Rapides du Hub -->
+          <div class="section-header" style="margin-top: 1rem;">
+            <span class="section-tag"><i data-lucide="zap"></i> <span data-i18n="hubTag">Accès Rapide</span></span>
+            <h2 class="section-title" data-i18n="hubTitle">Tout votre quotidien ENSTP à portée de clic</h2>
+          </div>
+
+          <div class="quick-hub-grid">
+            <a href="#carte-interactive" class="hub-card" data-goto="carte-interactive">
+              <div class="hub-card-icon orange"><i data-lucide="map"></i></div>
+              <h4 class="hub-card-title" data-i18n="hubMapTitle">Carte Interactive du Campus</h4>
+              <p class="hub-card-desc" data-i18n="hubMapDesc">Visualisez tous les amphithéâtres, laboratoires de géotechnique et pavillons administratifs.</p>
+              <span class="hub-card-cta"><span data-i18n="hubMapCta">Explorer le campus</span> <i data-lucide="arrow-right"></i></span>
+            </a>
+
+            <a href="#vie-pratique" class="hub-card" data-goto="vie-pratique">
+              <div class="hub-card-icon blue"><i data-lucide="coffee"></i></div>
+              <h4 class="hub-card-title" data-i18n="hubLifeTitle">Vie Pratique & Fast-Food</h4>
+              <p class="hub-card-desc" data-i18n="hubLifeDesc">Adresses précises, distances et itinéraires Google Maps pour vos pauses déjeuners à Garidi.</p>
+              <span class="hub-card-cta"><span data-i18n="hubLifeCta">Voir les 19 adresses</span> <i data-lucide="arrow-right"></i></span>
+            </a>
+
+            <a href="#emplois-du-temps" class="hub-card" data-goto="emplois-du-temps">
+              <div class="hub-card-icon green"><i data-lucide="calendar"></i></div>
+              <h4 class="hub-card-title" data-i18n="hubSchedTitle">Emplois du Temps Dynamiques</h4>
+              <p class="hub-card-desc" data-i18n="hubSchedDesc">Consultez le PDF officiel 3A DIB S5 et suivez la mise en ligne progressive des autres promotions.</p>
+              <span class="hub-card-cta"><span data-i18n="hubSchedCta">Consulter les plannings</span> <i data-lucide="arrow-right"></i></span>
+            </a>
+
+            <a href="#transports" class="hub-card" data-goto="transports">
+              <div class="hub-card-icon purple"><i data-lucide="bus"></i></div>
+              <h4 class="hub-card-title" data-i18n="hubTransTitle">Transports & Bus Cous</h4>
+              <p class="hub-card-desc" data-i18n="hubTransDesc">Lignes ETUSA, navettes métro, stations de taxis et horaires de ramassage universitaire ONOU.</p>
+              <span class="hub-card-cta"><span data-i18n="hubTransCta">Voir les trajets</span> <i data-lucide="arrow-right"></i></span>
+            </a>
+          </div>
+
+        </section>
+
+        <!-- ================================================================ -->
+        <!-- 2. CARTE INTERACTIVE DE L'ÉCOLE -->
+        <!-- ================================================================ -->
+        <section id="carte-interactive" class="app-section">
+          
+          <div class="section-header">
+            <span class="section-tag"><i data-lucide="map-pin"></i> <span data-i18n="mapTag">Campus ENSTP</span></span>
+            <h2 class="section-title" data-i18n="mapTitle">Carte Interactive & Guide des Bâtiments</h2>
+            <p class="section-desc" data-i18n="mapDesc">
+              Explorez le campus de l'ENSTP, repérez vos amphithéâtres, vos laboratoires d'essais et accédez à la carte dynamique en ligne.
+            </p>
+          </div>
+
+          <!-- Hero Action Carte Interactive -->
+          <div class="map-hero-card">
+            <div class="map-hero-text">
+              <span style="font-size: 0.85rem; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 0.05em;" data-i18n="mapHeroTag">Visualisation Interactive</span>
+              <h3 data-i18n="mapHeroTitle">Carte Interactive Officielle du Campus</h3>
+              <p data-i18n="mapHeroDesc">Naviguez en immersion dans l'enceinte de l'ENSTP : repérez les accès aux salles de cours, la scolarité, la bibliothèque centrale et les ateliers techniques.</p>
+            </div>
+            <div class="map-hero-actions">
+              <a href="https://hostmyclaudehtml.com/p/E3VLDo-1sX" target="_blank" rel="noopener noreferrer" class="btn-map-action btn-map-primary">
+                <i data-lucide="maximize-2"></i>
+                <span data-i18n="btnOpenMapFullscreen">Ouvrir la carte interactive en plein écran</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Embedded Map Preview -->
+          <div class="map-embed-wrapper">
+            <div class="map-embed-toolbar">
+              <div class="map-status-pill">
+                <span class="status-dot"></span>
+                <span data-i18n="mapStatusLive">Carte interactive connectée en direct</span>
+              </div>
+              <div class="map-toolbar-actions">
+                <button class="btn-toolbar" id="reloadMapBtn" title="Actualiser la carte">
+                  <i data-lucide="refresh-cw"></i>
+                  <span data-i18n="btnReloadMap">Actualiser</span>
+                </button>
+                <button class="btn-toolbar" id="fullscreenMapBtn" title="Mode plein écran">
+                  <i data-lucide="expand"></i>
+                  <span data-i18n="btnFullscreen">Plein écran</span>
+                </button>
+                <a href="https://hostmyclaudehtml.com/p/E3VLDo-1sX" target="_blank" rel="noopener noreferrer" class="btn-toolbar">
+                  <i data-lucide="external-link"></i>
+                  <span data-i18n="btnExternalLink">Lien externe</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="map-iframe-container">
+              <iframe id="campusMapIframe" src="https://hostmyclaudehtml.com/p/E3VLDo-1sX" title="Carte Interactive Campus ENSTP" loading="lazy" allowfullscreen></iframe>
+            </div>
+          </div>
+
+          <!-- Répertoire des Lieux Clés du Campus -->
+          <div class="section-header" style="margin-top: 3rem;">
+            <span class="section-tag"><i data-lucide="compass"></i> <span data-i18n="mapDirectoryTag">Répertoire</span></span>
+            <h3 class="section-title" style="font-size: 1.7rem;" data-i18n="mapDirectoryTitle">Lieux et Services Clés au sein du Campus</h3>
+          </div>
+
+          <div class="spots-filter-bar">
+            <button class="filter-chip active" data-filter="all" data-i18n="filterAllPlaces">Tous les lieux</button>
+            <button class="filter-chip" data-filter="amphis" data-i18n="filterAmphis">Amphithéâtres</button>
+            <button class="filter-chip" data-filter="labs" data-i18n="filterLabs">Laboratoires Spécialisés</button>
+            <button class="filter-chip" data-filter="departements" data-i18n="filterDepts">Bâtiments DIB & DMS</button>
+            <button class="filter-chip" data-filter="services" data-i18n="filterServices">Administration & Vie Étudiante</button>
+          </div>
+
+          <div class="spots-grid" id="spotsContainer">
+            <!-- Spots dynamiques injectés par JS -->
+          </div>
+
+        </section>
+
+        <!-- ================================================================ -->
+        <!-- 3. VIE PRATIQUE (AUTOUR DU CAMPUS - KOUBA / GARIDI) -->
+        <!-- ================================================================ -->
+        <section id="vie-pratique" class="app-section">
+          
+          <div class="section-header">
+            <span class="section-tag"><i data-lucide="shopping-bag"></i> <span data-i18n="lifeTag">Garidi & Kouba</span></span>
+            <h2 class="section-title" data-i18n="lifeTitle">Vie Pratique & Commerces Autour de l'École</h2>
+            <p class="section-desc" data-i18n="lifeDesc">
+              Toutes les adresses incontournables à proximité directe du campus : supérettes, fast-foods réputés, boulangeries artisanales et pharmacies de garde avec itinéraires Google Maps en 1 clic.
+            </p>
+          </div>
+
+          <!-- Filtres Interactifs -->
+          <div class="vp-controls-bar">
+            <div class="vp-top-filters">
+              <div class="vp-category-tabs">
+                <button class="vp-tab-btn active" data-category="all">
+                  <i data-lucide="grid"></i>
+                  <span data-i18n="catAll">Toutes les adresses</span>
+                </button>
+                <button class="vp-tab-btn" data-category="superettes">
+                  <i data-lucide="shopping-cart"></i>
+                  <span data-i18n="catSuperettes">Supérettes</span>
+                </button>
+                <button class="vp-tab-btn" data-category="restauration">
+                  <i data-lucide="utensils"></i>
+                  <span data-i18n="catFood">Fast-Food & Restauration</span>
+                </button>
+                <button class="vp-tab-btn" data-category="sante">
+                  <i data-lucide="heart-pulse"></i>
+                  <span data-i18n="catPharma">Pharmacies</span>
+                </button>
+                <button class="vp-tab-btn" data-category="boulangeries">
+                  <i data-lucide="croissant"></i>
+                  <span data-i18n="catBakeries">Boulangeries</span>
+                </button>
+                <button class="vp-tab-btn" data-category="favorites">
+                  <i data-lucide="star"></i>
+                  <span data-i18n="catFavs">Mes Favoris</span>
+                </button>
+              </div>
+
+              <div class="vp-search-wrapper">
+                <i data-lucide="search"></i>
+                <input type="text" id="vpSearchInput" data-i18n-placeholder="searchLifePlaceholder" placeholder="Filtrer un nom, tacos, pain...">
+              </div>
+            </div>
+
+            <div class="vp-sub-filters">
+              <div class="distance-filter-group">
+                <span class="distance-filter-label" data-i18n="distanceWalkLabel">Rayon à pied :</span>
+                <button class="distance-btn active" data-distance="all" data-i18n="distAll">Toutes distances</button>
+                <button class="distance-btn" data-distance="350" data-i18n="dist350">≤ 350 m (< 4 min)</button>
+                <button class="distance-btn" data-distance="500" data-i18n="dist500">≤ 500 m (< 7 min)</button>
+                <button class="distance-btn" data-distance="1000" data-i18n="dist1000">≤ 1 km (< 15 min)</button>
+              </div>
+
+              <span id="vpResultsCount" style="font-weight: 700; color: var(--primary);">19 adresses</span>
+            </div>
+          </div>
+
+          <!-- Grille des Commerces -->
+          <div class="places-grid" id="placesGrid">
+            <!-- Injecté dynamiquement par JS -->
+          </div>
+
+        </section>
+
+        <!-- ================================================================ -->
+        <!-- 4. TRANSPORTS ET DÉPLACEMENTS -->
+        <!-- ================================================================ -->
+        <section id="transports" class="app-section">
+          
+          <div class="section-header">
+            <span class="section-tag"><i data-lucide="navigation"></i> <span data-i18n="transTag">Mobilité Étudiante</span></span>
+            <h2 class="section-title" data-i18n="transTitle">Transports & Déplacements vers l'ENSTP</h2>
+            <p class="section-desc" data-i18n="transDesc">
+              Comment rejoindre facilement le campus depuis Alger-Centre, les cités universitaires ou les stations de métro via le réseau de bus ETUSA, les taxis et le transport universitaire (Cous).
+            </p>
+          </div>
+
+          <!-- 3 Piliers de Mobilité -->
+          <div class="transport-hero-grid">
+            <div class="trans-highlight-card">
+              <div class="trans-icon-header">
+                <div class="trans-icon-bubble etusa"><i data-lucide="bus"></i></div>
+                <span class="trans-tag blue">Bus Urbain</span>
+              </div>
+              <h3 data-i18n="transEtusaTitle">Réseau ETUSA</h3>
+              <p data-i18n="transEtusaDesc">Plusieurs lignes directes desservent la station de bus de Sidi Garidi et Vieux Kouba, reliant directement l'école à la Place du 1er Mai, Ben Aknoun et au métro.</p>
+            </div>
+
+            <div class="trans-highlight-card">
+              <div class="trans-icon-header">
+                <div class="trans-icon-bubble taxi"><i data-lucide="car"></i></div>
+                <span class="trans-tag amber">Taxis & VTC</span>
+              </div>
+              <h3 data-i18n="transTaxiTitle">Taxis & Métro</h3>
+              <p data-i18n="transTaxiDesc">Stations de taxis collectifs permanentes à Garidi 1 & Vieux Kouba vers la station Métro Haï El Badr (à seulement 5 min) et Les Fusillés / Ruisseau.</p>
+            </div>
+
+            <div class="trans-highlight-card">
+              <div class="trans-icon-header">
+                <div class="trans-icon-bubble cous"><i data-lucide="shield-check"></i></div>
+                <span class="trans-tag orange">ONOU</span>
+              </div>
+              <h3 data-i18n="transCousTitle">Transport Universitaire (Cous)</h3>
+              <p data-i18n="transCousDesc">Arrêt officiel devant le grand portail de l'ENSTP. Navettes gratuites régulières vers les cités universitaires de Garidi 1 & 2, Ben Aknoun et Bab Ezzouar.</p>
+            </div>
+          </div>
+
+          <!-- Lignes ETUSA -->
+          <div class="section-header">
+            <span class="section-tag"><i data-lucide="bus"></i> <span data-i18n="etusaHeadingTag">Lignes Principales</span></span>
+            <h3 class="section-title" style="font-size: 1.6rem;" data-i18n="etusaHeadingTitle">Lignes de Bus ETUSA desservant Garidi & Kouba</h3>
+          </div>
+
+          <div class="etusa-lines-grid" id="etusaGrid">
+            <!-- Injecté par JS -->
+          </div>
+
+          <!-- Transport Universitaire Cous -->
+          <div class="cous-card">
+            <div class="cous-header">
+              <div class="cous-header-icon"><i data-lucide="bus-front"></i></div>
+              <div>
+                <h3 data-i18n="transCousTitle">Transport Universitaire (Cous - ONOU)</h3>
+                <span style="font-size: 0.95rem; color: var(--text-muted);" data-i18n="cousOfficialStop">Arrêt officiel : Devant l'entrée principale de l'ENSTP (Portail d'honneur)</span>
+              </div>
+            </div>
+
+            <div class="cous-lines-container" id="cousLinesContainer">
+              <!-- Injecté par JS -->
+            </div>
+
+            <div class="cous-rules-box">
+              <strong><i data-lucide="alert-circle" style="vertical-align: middle; margin-right: 4px;"></i> <span data-i18n="cousRulesTitle">Consignes Importantes pour le Cous :</span></strong>
+              <ul id="cousRulesList">
+                <!-- Injecté par JS -->
+              </ul>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- ================================================================ -->
+        <!-- 5. SPORT & CLUBS (SSC ENSTP) -->
+        <!-- ================================================================ -->
+        <section id="sport" class="app-section">
+          
+          <div class="section-header">
+            <span class="section-tag"><i data-lucide="trophy"></i> <span data-i18n="sportTag">Vie Associative</span></span>
+            <h2 class="section-title" data-i18n="sportTitle">School Sport Club (SSC ENSTP)</h2>
+            <p class="section-desc" data-i18n="sportDesc">
+              Le club sportif historique de l'école : tournois inter-promotions, entraînements collectifs et esprit de camaraderie entre futurs ingénieurs.
+            </p>
+          </div>
+
+          <!-- Hero Spotlight SSC -->
+          <div class="ssc-hero">
+            <div class="ssc-content-box">
+              <span class="ssc-club-badge">
+                <i data-lucide="award"></i> <span data-i18n="sscOfficialBadge">Club Sportif Officiel</span>
+              </span>
+              <h2 data-i18n="sscHeroTitle">School Sport Club ENSTP</h2>
+              <p data-i18n="sscHeroDesc">
+                "L'Esprit d'Équipe au-delà de l'Ingénierie". Le SSC rassemble chaque année les élèves-ingénieurs autour de disciplines sportives de premier plan, organise le mythique Tournoi Inter-Promos et défend fièrement les couleurs de l'école lors des championnats universitaires nationaux.
+              </p>
+              <div class="ssc-hero-actions">
+                <a href="https://www.instagram.com/ssc.enstp?obrf=MTFtNm85eGoyNzlqOQ==" target="_blank" rel="noopener noreferrer" class="btn-instagram">
+                  <i data-lucide="instagram"></i>
+                  <span data-i18n="btnSscInstagram">Suivre le SSC ENSTP sur Instagram</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Disciplines Sportives -->
+          <div class="section-header">
+            <span class="section-tag"><i data-lucide="activity"></i> <span data-i18n="disciplinesTag">Pratiques</span></span>
+            <h3 class="section-title" style="font-size: 1.6rem;" data-i18n="disciplinesTitle">Disciplines & Activités Pratiquées</h3>
+          </div>
+
+          <div class="disciplines-grid" id="disciplinesGrid">
+            <!-- Injecté par JS -->
+          </div>
+
+          <!-- Événements Phares -->
+          <div class="section-header">
+            <span class="section-tag"><i data-lucide="flame"></i> <span data-i18n="eventsTag">Compétitions</span></span>
+            <h3 class="section-title" style="font-size: 1.6rem;" data-i18n="eventsTitle">Les Grands Rendez-vous Annuels du SSC</h3>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; margin-bottom: 3rem;" id="sscEventsGrid">
+            <!-- Injecté par JS -->
+          </div>
+
+        </section>
+
+        <!-- ================================================================ -->
+        <!-- 6. EMPLOIS DU TEMPS (ADAPTATION : 3A DIB S5 PDF DISPONIBLE) -->
+        <!-- ================================================================ -->
+        <section id="emplois-du-temps" class="app-section">
+          
+          <div class="section-header">
+            <span class="section-tag"><i data-lucide="calendar"></i> <span data-i18n="scheduleTag">Planning Pédagogique</span></span>
+            <h2 class="section-title" data-i18n="scheduleTitle">Module des Emplois du Temps</h2>
+            <p class="section-desc" data-i18n="scheduleDesc">
+              Consultez l'emploi du temps officiel de la 3ème Année Département DIB (Semestre 5) disponible en téléchargement PDF. Les autres promotions sont actuellement en cours de mise à jour.
+            </p>
+          </div>
+
+          <!-- Carte de Contrôle & Sélecteurs -->
+          <div class="schedule-control-card">
+            <div class="schedule-selectors-row">
+              <div class="selector-box">
+                <label for="cycleSelect" class="selector-label">
+                  <i data-lucide="layers"></i> <span data-i18n="selectCycleLabel">1. Choisissez le Cycle d'Études</span>
+                </label>
+                <select id="cycleSelect" class="custom-select">
+                  <option value="ingenieur" data-i18n="cycleIngenieur">Cycle Ingénieur d'État</option>
+                  <option value="prepa" data-i18n="cyclePrepa">Cycle Préparatoire (CP)</option>
+                </select>
+              </div>
+
+              <div class="selector-box">
+                <label for="levelSelect" class="selector-label">
+                  <i data-lucide="bookmark"></i> <span data-i18n="selectLevelLabel">2. Choisissez la Promotion & Département</span>
+                </label>
+                <select id="levelSelect" class="custom-select">
+                  <!-- Injecté par JS en fonction du cycle -->
+                </select>
+              </div>
+            </div>
+
+            <!-- Résumé & Boutons d'Action -->
+            <div class="schedule-header-summary">
+              <div class="schedule-info-left">
+                <h3 class="current-schedule-title" id="currentScheduleTitle">Cycle Ingénieur - 3ème Année (3A) - DIB</h3>
+                <span class="current-schedule-subtitle" id="currentScheduleSubtitle">Semestre 5 (S5) • Format PDF Officiel</span>
+              </div>
+
+              <div class="schedule-action-buttons" id="scheduleActionButtons">
+                <a href="EMPLOIS%20DU%20TEMPS%20S5.pdf" target="_blank" rel="noopener noreferrer" class="btn-schedule-action pdf" id="headerViewPdfBtn">
+                  <i data-lucide="file-text"></i>
+                  <span data-i18n="btnViewPdfOnline">Consulter PDF</span>
+                </a>
+                <a href="EMPLOIS%20DU%20TEMPS%20S5.pdf" download="EMPLOIS_DU_TEMPS_3A_DIB_S5_ENSTP.pdf" class="btn-schedule-action print" id="headerDownloadPdfBtn">
+                  <i data-lucide="download"></i>
+                  <span data-i18n="btnDownloadPdf">Télécharger en PDF</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Vue Emploi du Temps : Aperçu PDF Direct (3A DIB S5) ou État d'Attente Élégant -->
+          <div class="schedule-view-container" id="scheduleViewContainer">
+            <!-- Injecté dynamiquement par JS -->
+          </div>
+
+        </section>
+
+        <!-- ================================================================ -->
+        <!-- 7. SERVICES & CONTACTS UTILES -->
+        <!-- ================================================================ -->
+        <section id="contacts" class="app-section">
+          
+          <div class="section-header">
+            <span class="section-tag"><i data-lucide="phone"></i> <span data-i18n="contactsTag">Administration & Écoute</span></span>
+            <h2 class="section-title" data-i18n="contactsTitle">Services Pédagogiques & Contacts Utiles</h2>
+            <p class="section-desc" data-i18n="contactsDesc">
+              Tous les numéros, courriels officiels, bureaux et horaires d'ouverture des guichets de la scolarité, des départements et de la bibliothèque.
+            </p>
+          </div>
+
+          <!-- Grille des Contacts -->
+          <div class="contacts-grid" id="contactsGrid">
+            <!-- Injecté par JS -->
+          </div>
+
+          <!-- Formulaire de contact / signalement rapide -->
+          <div class="contact-form-card">
+            <div class="card-heading" style="margin-bottom: 0.5rem;">
+              <div class="card-heading-icon"><i data-lucide="send"></i></div>
+              <h3 data-i18n="contactFormTitle">Formulaire de Contact & Signalement Rapide</h3>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.95rem;" data-i18n="contactFormDesc">
+              Une question administrative, un signalement logistique ou une réclamation pédagogique ? Remplissez ce formulaire pour notifier directement les services de l'école.
+            </p>
+
+            <form id="quickContactForm">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label" for="studentName" data-i18n="formName">Nom et Prénom *</label>
+                  <input type="text" id="studentName" class="form-control" placeholder="ex: Amine Benali" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="studentEmail" data-i18n="formEmail">Email Universitaire / Personnel *</label>
+                  <input type="email" id="studentEmail" class="form-control" placeholder="ex: amine.benali@enstp.edu.dz" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="studentPromo" data-i18n="formPromo">Promotion Actuelle *</label>
+                  <select id="studentPromo" class="form-control" required>
+                    <option value="" disabled selected>Sélectionnez votre promotion</option>
+                    <option value="cp1">Cycle Prépa - CP1</option>
+                    <option value="cp2">Cycle Prépa - CP2</option>
+                    <option value="1a">Cycle Ingénieur - 1A</option>
+                    <option value="2a-dib">Cycle Ingénieur - 2A DIB</option>
+                    <option value="2a-dms">Cycle Ingénieur - 2A DMS</option>
+                    <option value="3a-dib">Cycle Ingénieur - 3A DIB</option>
+                    <option value="3a-dms">Cycle Ingénieur - 3A DMS</option>
+                    <option value="autre">Autre (Enseignant / Visiteur)</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="requestType" data-i18n="formRequestType">Objet de la Demande *</label>
+                  <select id="requestType" class="form-control" required>
+                    <option value="scolarite">Attestation / Relevé de Notes (Scolarité)</option>
+                    <option value="pedagogie">Question Pédagogique / Départements</option>
+                    <option value="stage">Stage de Terrain / Suivi PFE</option>
+                    <option value="campus">Signalement Logistique Campus / Salle</option>
+                    <option value="ssc">Question Sport / Adhésion Club SSC</option>
+                    <option value="autre">Autre Demande</option>
+                  </select>
+                </div>
+
+                <div class="form-group form-full">
+                  <label class="form-label" for="requestMessage" data-i18n="formMessage">Votre Message ou Signalement *</label>
+                  <textarea id="requestMessage" class="form-control" placeholder="Détaillez clairement votre demande ou votre signalement..." required></textarea>
+                </div>
+              </div>
+
+              <button type="submit" class="btn-submit-form">
+                <i data-lucide="send"></i>
+                <span data-i18n="btnSubmitForm">Transmettre la demande</span>
+              </button>
+            </form>
+          </div>
+
+        </section>
+
+      </div>
+
+      <!-- App Footer -->
+      <footer class="app-footer">
+        <div class="footer-inner">
+          <div class="footer-copy">
+            <strong>École Nationale Supérieure des Travaux Publics (ENSTP)</strong><br>
+            <span data-i18n="footerAddress">Rue Sidi Garidi, BP 32, Kouba, 16051 Alger - Algérie</span>
+          </div>
+          <div class="footer-links">
+            <a href="https://hostmyclaudehtml.com/p/E3VLDo-1sX" target="_blank" rel="noopener noreferrer" data-i18n="navMap">Carte Interactive</a>
+            <a href="https://www.instagram.com/ssc.enstp?obrf=MTFtNm85eGoyNzlqOQ==" target="_blank" rel="noopener noreferrer">Instagram SSC</a>
+            <a href="#accueil" data-goto="accueil" data-i18n="footerTop">Haut de page ↑</a>
+          </div>
+        </div>
+      </footer>
+
+    </main>
+
+  </div>
+
+  <!-- ====================================================================== -->
+  <!-- MODALE DE RECHERCHE GLOBALE (CTRL + K) -->
+  <!-- ====================================================================== -->
+  <div class="search-modal-backdrop" id="searchModal">
+    <div class="search-modal">
+      <div class="search-modal-header">
+        <i data-lucide="search"></i>
+        <input type="text" class="search-modal-input" data-i18n-placeholder="searchPlaceholder" placeholder="Rechercher fast-food, amphi, ligne de bus, matière...">
+        <button class="search-modal-close" data-i18n="searchShortcut">ESC</button>
+      </div>
+      <div class="search-modal-results">
+        <!-- Résultats dynamiques -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
